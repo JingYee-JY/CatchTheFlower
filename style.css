@@ -113,7 +113,7 @@ html, body{
 }
 .startButtton{
     position:absolute;
-    bottom: 10vh;
+    bottom: 5vh;
     height: 10vh;
     width: 25vh;
     background-color: #D2F5FF;
