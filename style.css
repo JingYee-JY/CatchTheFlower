@@ -20,7 +20,7 @@ html{
 }
 .flower1{
     width: 50vmin;
-    height: 25vh;
+    height: 25vmin;
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
@@ -32,7 +32,7 @@ html{
 }
 .flower2{
     width: 50vmin;
-    height: 15vh;
+    height: 15vmin;
     border-radius: 5px;
     position: absolute;
     box-shadow: 3px 3px 3px blink;
@@ -44,7 +44,7 @@ html{
 }
 .leaf1{
     width: 50vmin;
-    height: 15vh;
+    height: 15vmin;
     border-radius: 5px;
     position: absolute;
     box-shadow: 3px 3px 3px blink;
@@ -56,7 +56,7 @@ html{
 }
 .leaf2{
     width: 50vmin;
-    height: 15vh;
+    height: 15vmin;
     border-radius: 5px;
     position: absolute;
     box-shadow: 3px 3px 3px blink;
@@ -68,7 +68,7 @@ html{
 }
 .twig1{
     width: 50vmin;
-    height: 15vh;
+    height: 15vmin;
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
@@ -80,7 +80,7 @@ html{
 }
 .twig2{
     width: 50vh;
-    height: 15vh;
+    height: 15vmin;
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
@@ -104,15 +104,14 @@ html{
 }
 .startButtton{
     position:inherit;
-    bottom: 10vh;
-    height: 10vh;
+    bottom: 20vmin;
+    height: 10vmin;
     width: 30vmin;
     background-color: #D2F5FF;
-    font-size: 2vmax;
+    font-size: 4vmax;
     color: #224c0b;
     border: 2px solid black;
     border-radius: 1.5em;
-    padding: 0.5em 0.5em;
     cursor: pointer;
 }
 .start{
@@ -171,7 +170,7 @@ html{
 .try-harder-background{
     position: absolute;
     display: flex;
-    top: 15vh;
+    top: 10vh;
     width: 65vh;
     height: 65vh;
     justify-content: center;
@@ -184,7 +183,7 @@ html{
 .well-done-background{
     position: absolute;
     display: flex;
-    top: 15vh;
+    top: 10vh;
     width: 65vh;
     height: 65vh;
     justify-content: center;
@@ -197,8 +196,8 @@ html{
 .restart{
     position: absolute;
     bottom: 5vh;
-    height: 10vh;
-    width: 30vh;
+    height: 10vmin;
+    width: 30vmin;
     background-color: #FABAAB;
     font-size: 1em;
     color: #4E2BAB;
