@@ -126,6 +126,10 @@ html{
     margin: 20px;
     position: absolute;
     font-size: 2em;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5em 0.5em;
 }
 .game{
     top: 1vh;
@@ -186,7 +190,6 @@ html{
 .well-done-background{
     position: absolute;
     display: flex;
-    top: 8vmin;
     width: 65vmin;
     height: 65vmin;
     justify-content: center;
