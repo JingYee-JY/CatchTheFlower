@@ -104,7 +104,7 @@ html{
 }
 .startButtton{
     position:inherit;
-    bottom: 20vmin;
+    bottom: 30vmin;
     height: 10vmin;
     width: 30vmin;
     background-color: #D2F5FF;
@@ -170,9 +170,9 @@ html{
 .try-harder-background{
     position: absolute;
     display: flex;
-    top: 10vh;
-    width: 65vh;
-    height: 65vh;
+    top: 8vmin;
+    width: 65vmin;
+    height: 65vmin;
     justify-content: center;
     text-align: center;
     background:  rgb(241, 153, 52, 0.7);
@@ -183,9 +183,9 @@ html{
 .well-done-background{
     position: absolute;
     display: flex;
-    top: 10vh;
-    width: 65vh;
-    height: 65vh;
+    top: 8vmin;
+    width: 65vmin;
+    height: 65vmin;
     justify-content: center;
     text-align: center;
     background:  rgb(241, 153, 52, 0.7);
@@ -195,7 +195,7 @@ html{
 }
 .restart{
     position: absolute;
-    bottom: 5vh;
+    bottom: 5vmin;
     height: 10vmin;
     width: 30vmin;
     background-color: #FABAAB;
@@ -225,21 +225,21 @@ html{
     font-size: 1.7em;
     font-weight: 600;
     color: white;
-    top: 10vh;
+    top: 10vmin;
 }
 .result-score-count{
     position: absolute;
     font-size: 1.5em;
     font-weight: 600;
     color: white;
-    top: 18vh;
+    top: 18vmin;
 }
 .words{
     position: absolute;
     font-size: 1.8em;
     font-weight: 400;
     color: #2E6A59;
-    top: 26vh;
+    top: 26vmin;
 }
 .final{
     position: relative;
