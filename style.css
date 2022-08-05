@@ -104,7 +104,7 @@ html{
 }
 .startButtton{
     position:inherit;
-    bottom: 30vmin;
+    bottom: 30vh;
     height: 10vmin;
     width: 30vmin;
     background-color: #D2F5FF;
@@ -131,13 +131,13 @@ html{
 }
 .timer{
     margin: 0px;
-    right: 23vmin;
+    right: 20vmin;
     position: absolute;
     font-size: 2em;
 }
 .timer-count{
     position: absolute;
-    right: 33vmin;
+    right: 31vmin;
     top: 8vmin;
     margin: 1px;
     font-size: 2em;
@@ -145,13 +145,13 @@ html{
 }
 .score{
     margin: 0;
-    left: 25vmin;
+    left: 23vmin;
     position: absolute;
     font-size: 2em;
 }
 .score-count{
     position: absolute;
-    left: 35vmin;
+    left: 33vmin;
     top: 8vmin;
     margin: 1px;
     font-size: 2em;
@@ -163,14 +163,16 @@ html{
     top: 5vh;
 }
 .holder{
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 .try-harder-background{
     position: absolute;
     display: flex;
-    top: 8vmin;
     width: 65vmin;
     height: 65vmin;
     justify-content: center;
@@ -209,10 +211,10 @@ html{
 .restart-background{
     position: absolute;
     display: flex;
-    width: 100vmin;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 .result{
     position: absolute;
