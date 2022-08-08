@@ -19,8 +19,8 @@ html{
     overflow: hidden;
 }
 .flower1{
-    width: 50vmin;
-    height: 25vmin;
+    width: 50vh;
+    height: 25vh;
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
@@ -31,8 +31,8 @@ html{
     background-repeat: no-repeat;
 }
 .flower2{
-    width: 50vmin;
-    height: 15vmin;
+    width: 50vh;
+    height: 15vh;
     border-radius: 5px;
     position: absolute;
     box-shadow: 3px 3px 3px blink;
@@ -43,8 +43,8 @@ html{
     background-repeat: no-repeat;
 }
 .leaf1{
-    width: 50vmin;
-    height: 15vmin;
+    width: 50vh;
+    height: 15vh;
     border-radius: 5px;
     position: absolute;
     box-shadow: 3px 3px 3px blink;
@@ -55,8 +55,8 @@ html{
     background-repeat: no-repeat;
 }
 .leaf2{
-    width: 50vmin;
-    height: 15vmin;
+    width: 50vh;
+    height: 15vh;
     border-radius: 5px;
     position: absolute;
     box-shadow: 3px 3px 3px blink;
@@ -67,8 +67,8 @@ html{
     background-repeat: no-repeat;
 }
 .twig1{
-    width: 50vmin;
-    height: 15vmin;
+    width: 50vh;
+    height: 15vh;
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
@@ -80,7 +80,7 @@ html{
 }
 .twig2{
     width: 50vh;
-    height: 15vmin;
+    height: 15vh;
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
@@ -97,8 +97,8 @@ html{
 
 .background{
     display: flex;
-    height: 700px;
-    width: 400px;
+    height: 100vh;
+    width: 100vh;
     justify-content: center;
     align-items: center;
 }
@@ -108,7 +108,7 @@ html{
     height: 10vmin;
     width: 30vmin;
     background-color: #D2F5FF;
-    font-size: 4vmax;
+    font-size: 3vmax;
     color: #224c0b;
     border: 2px solid black;
     border-radius: 1.5em;
@@ -117,8 +117,8 @@ html{
 .start{
     position: absolute;
     display: flex;
-    width: 100vmin;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     text-align: center;
 }
