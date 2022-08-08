@@ -24,6 +24,7 @@ html{
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
+    display: flex;
     background-image: url("Blue Flower.png");
     background-size: contain;
     justify-content: center;
@@ -35,6 +36,7 @@ html{
     height: 15vh;
     border-radius: 5px;
     position: absolute;
+    display: flex;
     box-shadow: 3px 3px 3px blink;
     background-image: url("Flower\ Orchid.png");
     background-size: contain;
@@ -47,6 +49,7 @@ html{
     height: 15vh;
     border-radius: 5px;
     position: absolute;
+    display: flex;
     box-shadow: 3px 3px 3px blink;
     background-image: url("Leaf.png");
     background-size: contain;
@@ -59,6 +62,7 @@ html{
     height: 15vh;
     border-radius: 5px;
     position: absolute;
+    display: flex;
     box-shadow: 3px 3px 3px blink;
     background-image: url("Leaf 2.png");
     background-size: contain;
@@ -72,6 +76,7 @@ html{
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
+    display: flex;
     background-image: url("Twig.png");
     background-size: contain;
     justify-content: center;
@@ -84,6 +89,7 @@ html{
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
+    display: flex;
     background-image: url("Twig 2.png");
     background-size: contain;
     justify-content: center;
@@ -96,9 +102,10 @@ html{
 }
 
 .background{
+    position: absolute;
     display: flex;
-    height: 100vh;
-    width: 100vh;
+    height: 50vh;
+    width: 50vh;
     justify-content: center;
     align-items: center;
 }
