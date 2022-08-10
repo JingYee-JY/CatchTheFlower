@@ -51,7 +51,7 @@ function spawnFlower(){
         flower.classList.add(objects[index])
         flower.y = ((x+1) * 40) * -1;
         flower.style.top = flower.y + 'vh';
-        flower.style.left = Math.floor(Math.random() * 50) + 'vh';
+        flower.style.left = Math.floor(Math.random() * 50) + 'vmin';
         background.appendChild(flower);
         if(objects[index] == "flower1"){
             flower.addEventListener("click", () => {

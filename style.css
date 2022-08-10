@@ -104,8 +104,8 @@ html{
 .background{
     position: absolute;
     display: flex;
-    height: 50vh;
-    width: 50vh;
+    height: 100%;
+    width: 100vmin;
     justify-content: center;
     align-items: center;
 }
