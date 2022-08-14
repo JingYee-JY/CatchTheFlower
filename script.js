@@ -15,8 +15,8 @@ let score = 0;
 var objects = [ "flower1","flower2", "leaf1", "twig1","flower1","flower2", "leaf2", "twig2"]
 function updateCountDown(){
     if(startGame == true || previewGame == true){
-        timerCount.innerHTML = `${time}`;
-        scoreCount.innerHTML = `${score}`;
+        timerCount.innerHTML = `${time} s`;
+        scoreCount.innerHTML = `${score} pt`;
         if(time == 0){
             startGame = false
             if(score >= 15){
@@ -41,7 +41,7 @@ function updateCountDown(){
 }
 function updateScore(){
     if(startGame == true){
-        scoreCount.innerHTML = `${score}`;
+        scoreCount.innerHTML = `${score} pt`;
     }
 }
 
@@ -93,12 +93,6 @@ function fallingObject(){
     if(startGame){
         moveFlower()
         window.requestAnimationFrame(fallingObject);
-    }
-}
-function previewFall(){
-    if(previewGame){
-        moveFlower()
-        window.requestAnimationFrame(previewFall);
     }
 }
 
@@ -183,14 +177,6 @@ function start(){
         }
     }
 }
-function preview(){
-    if(previewGame == true){
-        window.requestAnimationFrame(previewFall);
-        for(x = 0; x < 5; x++){
-            spawnFlower()
-        }
-    }
-}
 
 function remove(){
     let flowers = document.querySelectorAll(".flower1");
@@ -220,13 +206,13 @@ function remove(){
     })
 }
 
-preview()
 setInterval(updateCountDown, 1000)
 setInterval(updateScore, 1)
 
 const startContainer = document.querySelector(".start");
 const startButtton = document.querySelector(".startButtton");
 const game = document.querySelector(".game");
+const gamebackground = document.querySelector(".game-background");
 
 
 startButtton.addEventListener("click", () => {
@@ -236,8 +222,9 @@ startButtton.addEventListener("click", () => {
     previewGame = false
     remove()
     time = 15
+    timerCount.innerHTML = `${time} s`;
     score = 0
-    timerCount.innerHTML = `15`
+    gamebackground.classList.remove("hide")
     start()
 })
 
@@ -249,6 +236,7 @@ restart.forEach(function(item){
     wellDone.classList.add("hide")
     restartBackground.classList.add("hide")
     previewGame = true
+    gamebackground.classList.add("hide")
     remove()
     preview()
 })

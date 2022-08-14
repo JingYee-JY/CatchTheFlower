@@ -4,36 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" 
+    href="https://fonts.googleapis.com/css?family=Lilita One">
     <title>Catch the Flower</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class = "holder">
-        <div class = "background"></div>
-        <div class="start ">
-            <p class="title"><b>Catch the Flower</b></p>
-            <button class="startButtton">Start</button>
+        <div class = "game-background hide">
+            <div class = "background"></div>
+        </div>
+        <div class="start">
+            <img class="title" src="./img/Title.png">
+            <div class="preview">
+                <div class="pre">
+                    <img class="preImage" src="./img/Blue Flower.png">
+                </div>
+                <div class="pre">
+                    <img class="pre" src="./img/Twig 2.png">
+                </div>
+                <div class="pre">
+                    <img class="pre" src="./img/Leaf 2.png">
+                </div>
+                <div class="pre">
+                    <img class="pre" src="./img/Flower Orchid.png">
+                </div>
+            </div>
+            <button class="startButtton">
+                <img class="btn" src="./img/startGame.png">
+            </button>
         </div>
         <div class ="game hide">
-            <p class="timer"><b>Timer:</b></p>
-            <p class="timer-count">00</p>
-            <p class="score"><b>Score:</b></p>
-            <p class="score-count"><b>0</b></p>
+            <div class="topRight">
+                <button class="help">
+                    <img class="icon" src="./img/help.png">
+                </button>
+                <button class="setting">
+                    <img class="icon" src="./img/setting.png">
+                </button>
+            </div>
+            <p class="timer-count">00 s</p>
+            <p class="score-count"><b>0 pt</b></p>
         </div>
             <div class="restart-background hide">
                 <div class="try-harder-background hide">
-                    <p class="result">You can do it!</p>
-                    <p class="words">Click on the flower only!</p>
-                    <p class="result-score">Score:</p>
-                    <p class="result-score-count">0</p>
-                    <button class="restart">Play Again</button>
+                    <img class="endTitle" src="./img/Title.png" alt="">
+                    <img class="popUp" src="./img/tryHarder.png" alt="">
+                    <div class="result-score-count"></div>
+                    <button class="restart">
+                        <img class="btn" src="./img/playAgain.png">
+                    </button>
                 </div>
                 <div class="well-done-background hide">
-                    <p class="result">Well Done!</p>
-                    <p class="words">Keep up the good work!</p>
-                    <p class="result-score">Score:</p>
-                    <p class="result-score-count">0</p>
-                    <button class="restart">Play Again</button>
+                    <img class="endTitle" src="./img/Title.png" alt="">
+                    <img class="popUp" src="./img/wellDone.png" alt="">
+                    <div class="result-score-count"></div>
+                    <button class="restart">
+                        <img class="btn" src="./img/playAgain.png">
+                    </button>
                 </div>            
             </div>          
     </div>    

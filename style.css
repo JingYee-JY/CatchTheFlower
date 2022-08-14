@@ -1,17 +1,14 @@
 body{
+    background-color: #F8E7D4;
     width: 100%;
     height: 100%;
-    background-color: #93ba7f;
-    margin: 0px;
-    padding: 0px;
-    background-image: url("BG.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    display: flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
     overflow: hidden;
     position: fixed;
+    padding: 0;
+    margin: 0;
 }
 html{
     width: 100%;
@@ -25,7 +22,7 @@ html{
     box-shadow: 3px 3px 3px blink;
     position: absolute;
     display: flex;
-    background-image: url("Blue Flower.png");
+    background-image: url("./img/Blue Flower.png");
     background-size: contain;
     justify-content: center;
     text-align: center;
@@ -38,7 +35,7 @@ html{
     position: absolute;
     display: flex;
     box-shadow: 3px 3px 3px blink;
-    background-image: url("Flower\ Orchid.png");
+    background-image: url("./img/Flower Orchid.png");
     background-size: contain;
     justify-content: center;
     text-align: center;
@@ -51,7 +48,7 @@ html{
     position: absolute;
     display: flex;
     box-shadow: 3px 3px 3px blink;
-    background-image: url("Leaf.png");
+    background-image: url("./img/Leaf.png");
     background-size: contain;
     justify-content: center;
     text-align: center;
@@ -64,7 +61,7 @@ html{
     position: absolute;
     display: flex;
     box-shadow: 3px 3px 3px blink;
-    background-image: url("Leaf 2.png");
+    background-image: url("./img/Leaf 2.png");
     background-size: contain;
     justify-content: center;
     text-align: center;
@@ -77,7 +74,7 @@ html{
     box-shadow: 3px 3px 3px blink;
     position: absolute;
     display: flex;
-    background-image: url("Twig.png");
+    background-image: url("./img/Twig.png");
     background-size: contain;
     justify-content: center;
     text-align: center;
@@ -90,7 +87,7 @@ html{
     box-shadow: 3px 3px 3px blink;
     position: absolute;
     display: flex;
-    background-image: url("Twig 2.png");
+    background-image: url("./img/Twig 2.png");
     background-size: contain;
     justify-content: center;
     text-align: center;
@@ -106,28 +103,27 @@ html{
     display: flex;
     height: 100%;
     width: 100vmin;
+    background-size: cover;
+    background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
 }
-.startButtton{
-    position:inherit;
-    bottom: 20vh;
-    height: 10vmin;
-    width: 30vmin;
-    background-color: #D2F5FF;
-    font-size: 3vmax;
-    color: #224c0b;
-    border: 2px solid black;
-    border-radius: 1.5em;
-    cursor: pointer;
+button{
+    background-color: rgba(255, 255, 255,0);
+    border: 0px;
 }
-.start{
+.start,
+.try-harder-background,
+.well-done-background{
     position: absolute;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    place-items: center;
+    gap: 2vh;
     width: 100%;
     height: 100%;
-    justify-content: center;
-    text-align: center;
 }
 .title{
     margin: 20px;
@@ -139,7 +135,7 @@ html{
     padding: 0.5em 0.5em;
 }
 .game{
-    top: 1vh;
+    top: 4vh;
     width: 100%;
     height: 10%;
     position: absolute;
@@ -154,25 +150,21 @@ html{
 }
 .timer-count{
     position: absolute;
-    left: 21vmin;
+    left: 5vmin;
     top: 8vmin;
     margin: 1px;
-    font-size: 2em;
-    font-weight: 600;
-}
-.score{
-    margin: 0;
-    right: 13vmin;
-    position: absolute;
-    font-size: 2em;
+    font-size: 3em;
+    font-family: "Lilita One";
+    color: #4E2BAB;
 }
 .score-count{
     position: absolute;
-    right: 23vmin;
+    right: 5vmin;
     top: 8vmin;
     margin: 1px;
-    font-size: 2em;
-    font-weight: 600;
+    font-size: 3em;
+    font-family: "Lilita One";
+    color: #D1129B;
 }
 .holder{
     position: relative;
@@ -181,43 +173,6 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.try-harder-background{
-    position: absolute;
-    display: flex;
-    width: 65vmin;
-    height: 65vmin;
-    justify-content: center;
-    text-align: center;
-    background:  rgb(241, 153, 52, 0.7);
-    border: 2px solid black;
-    border-radius: 3em;
-    padding: 0.5em 0.5em;
-}
-.well-done-background{
-    position: absolute;
-    display: flex;
-    width: 65vmin;
-    height: 65vmin;
-    justify-content: center;
-    text-align: center;
-    background:  rgb(241, 153, 52, 0.7);
-    border: 2px solid black;
-    border-radius: 3em;
-    padding: 0.5em 0.5em;
-}
-.restart{
-    position: absolute;
-    bottom: 5vmin;
-    height: 10vmin;
-    width: 30vmin;
-    background-color: #FABAAB;
-    font-size: 1em;
-    color: #4E2BAB;
-    border: 2px solid black;
-    border-radius: 1.5em;
-    padding: 0.5em 0.5em;
-    cursor: pointer;
 }
 .restart-background{
     position: absolute;
@@ -230,32 +185,73 @@ html{
 .result{
     position: absolute;
     font-size: 1.8em;
+    top: 50vh;
     font-weight: 600;
     color: #2E6A59;
-}
-.result-score{
-    position: absolute;
-    font-size: 1.7em;
-    font-weight: 600;
-    color: white;
-    top: 10vmin;
 }
 .result-score-count{
     position: absolute;
-    font-size: 1.5em;
+    font-size: 8vh;
     font-weight: 600;
     color: white;
-    top: 18vmin;
-}
-.words{
-    position: absolute;
-    font-size: 1.8em;
-    font-weight: 400;
-    color: #2E6A59;
-    top: 26vmin;
+    top: 58vh;
+    font-family: "Lilita One";
+
 }
 .final{
     position: relative;
     width: 100vmin;
     height: 100vh;
+}
+.title{
+    position: relative;
+    margin: 0%;
+    padding: 0%;
+    width: 20vh;
+}
+.preview{
+    display: grid;
+    width: 45vh;
+    height: 47vh;
+    gap: 3vh;
+    grid-template-columns: repeat(2, 22vh);
+    grid-template-rows: repeat(2, 22vh);
+}
+.pre{
+    width: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.preImage{
+    width: 20vh;
+}
+.btn{
+    width: 40vh;
+    height: 10vh;
+}
+.game-background{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("./img/BG.jpg");
+}
+.endTitle{
+    width: 30vh;
+}
+.popUp{
+    width: 40vh;
+}
+.topRight{
+    position: absolute;
+    display: flex;
+    top: -3vh;
+    right: 1vh;
+}
+.icon{
+    width: 8vh;
 }
