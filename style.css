@@ -190,11 +190,11 @@ button{
     color: #2E6A59;
 }
 .result-score-count{
-    position: absolute;
+    position: relative;
     font-size: 8vh;
     font-weight: 600;
     color: white;
-    top: 58vh;
+    bottom: 8vh;
     font-family: "Lilita One";
 
 }
@@ -245,6 +245,13 @@ button{
 }
 .popUp{
     width: 40vh;
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 .topRight{
     position: absolute;

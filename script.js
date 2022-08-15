@@ -238,6 +238,5 @@ restart.forEach(function(item){
     previewGame = true
     gamebackground.classList.add("hide")
     remove()
-    preview()
 })
 })
