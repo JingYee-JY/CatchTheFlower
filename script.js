@@ -6,9 +6,13 @@ const wellDone = document.querySelector(".well-done-background");
 const restart = document.querySelectorAll(".restart");
 const restartBackground = document.querySelector(".restart-background");
 const resultScoreCount = document.querySelectorAll(".result-score-count");
+const howToPlay = document.querySelector(".howToPlay");
+const instruction = document.querySelector(".instruction");
+const close = document.querySelector(".close");
+const help = document.querySelector(".help");
 let startGame = false;
 let previewGame = true;
-let player = {step: 0.5}
+let player = {step: 0.3}
 let time;
 let score = 0;
 
@@ -92,8 +96,8 @@ function spawnFlower(){
 function fallingObject(){
     if(startGame){
         moveFlower()
-        window.requestAnimationFrame(fallingObject);
     }
+    window.requestAnimationFrame(fallingObject);
 }
 
 function moveFlower(){
@@ -239,4 +243,20 @@ restart.forEach(function(item){
     gamebackground.classList.add("hide")
     remove()
 })
+})
+
+help.addEventListener("click", () => {
+    instruction.classList.remove("hide");
+    startGame = false;
+})
+
+  howToPlay.addEventListener("click", () => {
+    instruction.classList.remove("hide");
+    seeingInstruction = true;
+})
+
+close.addEventListener("click", () => {
+  instruction.classList.add("hide");
+  seeingInstruction = false
+  startGame = true;
 })
