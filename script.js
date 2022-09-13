@@ -8,9 +8,10 @@ const restartBackground = document.querySelector(".restart-background");
 const resultScoreCount = document.querySelectorAll(".result-score-count");
 let startGame = false;
 let previewGame = true;
-let player = {step: 0.3}
+let player = {step: 1}
 let time;
 let score = 0;
+let border
 
 var objects = [ "flower1","flower2", "leaf1", "twig1","flower1","flower2", "leaf2", "twig2"]
 function updateCountDown(){
@@ -19,7 +20,7 @@ function updateCountDown(){
         scoreCount.innerHTML = `${score} pt`;
         if(time == 0){
             startGame = false
-            if(score >= 15){
+            if(score >= 100){
                 game.classList.add("hide")
                 restartBackground.classList.remove("hide")
                 wellDone.classList.remove("hide")
@@ -46,12 +47,13 @@ function updateScore(){
 }
 
 function spawnFlower(){
+        border = background.getBoundingClientRect();
         let flower = document.createElement("div");
         var index = randomInt(objects.length);
         flower.classList.add(objects[index])
-        flower.y = ((x+1) * 40) * -1;
-        flower.style.top = flower.y + 'vh';
-        flower.style.left = Math.floor(Math.random() * 50) + 'vmin';
+        flower.y = ((x+1) * 150) * -1;
+        flower.style.top = flower.y + 'px';
+        flower.style.left = Math.floor(Math.random() * (border.width - 100)) + 'px';
         background.appendChild(flower);
         if(objects[index] == "flower1"){
             flower.addEventListener("click", () => {
@@ -104,66 +106,35 @@ function moveFlower(){
     let twigs = document.querySelectorAll(".twig1");
     let twig1 = document.querySelectorAll(".twig2");
     
-    flowers.forEach(function(item){
-        if(item.y > 0 && item.y < 0.3){
+    function condition(item){
+        if(item.y > border.height /4 && item.y < (border.height /4 + 1)){
             spawnFlower();
         }
-        if(item.y > 150){
+        if(item.y > border.height){
             background.removeChild(item);
         }
         console.log(item.y)
         item.y = item.y + player.step;
-        item.style.top = item.y +"vmin";
+        item.style.top = item.y +"px";
+    }
+
+    flowers.forEach(function(item){
+        condition(item)
     })
     flower1.forEach(function(item){
-        if(item.y > 0 && item.y < 0.3){
-            spawnFlower();
-        }
-        if(item.y > 150){
-            background.removeChild(item);
-        }
-        item.y = item.y + player.step;
-        item.style.top = item.y +"vmin";
+        condition(item)
     })
     leafs.forEach(function(item){
-        if(item.y > 0 && item.y < 0.3){
-            spawnFlower();
-        }
-        if(item.y > 150){
-            background.removeChild(item);
-        }
-        item.y = item.y + player.step;
-        item.style.top = item.y +"vmin";
+        condition(item)
     })
     leaf1.forEach(function(item){
-        if(item.y > 0 && item.y < 0.3){
-            spawnFlower();
-        }
-        if(item.y > 150){
-            background.removeChild(item);
-        }
-        item.y = item.y + player.step;
-        item.style.top = item.y +"vmin";
+        condition(item)
     })
     twigs.forEach(function(item){
-        if(item.y > 0 && item.y < 0.3){
-            spawnFlower();
-        }
-        if(item.y > 150){
-            background.removeChild(item);
-        }
-        item.y = item.y + player.step;
-        item.style.top = item.y +"vmin";
+        condition(item)
     })
     twig1.forEach(function(item){
-        if(item.y > 0 && item.y < 0.3){
-            spawnFlower();
-        }
-        if(item.y > 150){
-            background.removeChild(item);
-        }
-        item.y = item.y + player.step;
-        item.style.top = item.y +"vmin";
+        condition(item)
     })
 }
 
@@ -222,7 +193,7 @@ startButtton.addEventListener("click", () => {
     startGame = true
     previewGame = false
     remove()
-    time = 15
+    time = 100
     timerCount.innerHTML = `${time} s`;
     score = 0
     gamebackground.classList.remove("hide")

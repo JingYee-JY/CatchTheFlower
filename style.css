@@ -282,3 +282,10 @@ button{
     width: 20vmin;
     height: 7vmin;
   }
+
+  /*desktop*/
+@media screen and (min-width:1200px){
+    .game, .game-background{
+        max-width: 400px;
+    }
+}
