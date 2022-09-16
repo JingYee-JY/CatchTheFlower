@@ -108,7 +108,7 @@ function moveFlower(){
     
     function condition(item){
         console.log(Math.floor(border.height /4))
-        if(item.y > Math.floor(border.height /4) && item.y < (Math.floor(border.height /4) + 1)){
+        if(item.y >= Math.floor(border.height /4) && item.y < (Math.floor(border.height /4) + 1)){
             spawnFlower();
         }
         if(item.y > border.height){
