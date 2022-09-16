@@ -285,7 +285,7 @@ button{
 
   /*desktop*/
 @media screen and (min-width:1200px){
-    .game, .game-background{
+    .game, .game-background,.background{
         max-width: 400px;
     }
 }
