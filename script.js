@@ -51,7 +51,7 @@ function spawnFlower(){
         let flower = document.createElement("div");
         var index = randomInt(objects.length);
         flower.classList.add(objects[index])
-        flower.y = ((x+1) * 150) * -1;
+        flower.y = 0;
         flower.style.top = flower.y + 'px';
         flower.style.left = Math.floor(Math.random() * (border.width - 100)) + 'px';
         background.appendChild(flower);
@@ -144,9 +144,7 @@ function randomInt(limit){
 function start(){
     if(startGame == true){
         window.requestAnimationFrame(fallingObject);
-        for(x = 0; x < 5; x++){
-            spawnFlower()
-        }
+        spawnFlower()
     }
 }
 
