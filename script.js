@@ -107,13 +107,13 @@ function moveFlower(){
     let twig1 = document.querySelectorAll(".twig2");
     
     function condition(item){
-        if(item.y > border.height /4 && item.y < (border.height /4 + 1)){
+        console.log(Math.floor(border.height /4))
+        if(item.y > Math.floor(border.height /4) && item.y < (Math.floor(border.height /4) + 1)){
             spawnFlower();
         }
         if(item.y > border.height){
             background.removeChild(item);
         }
-        console.log(item.y)
         item.y = item.y + player.step;
         item.style.top = item.y +"px";
     }
