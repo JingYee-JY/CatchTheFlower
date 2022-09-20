@@ -4,6 +4,7 @@ const scoreCount = document.querySelector(".score-count");
 const goodJob = document.querySelector(".try-harder-background");
 const wellDone = document.querySelector(".well-done-background");
 const restart = document.querySelectorAll(".restart");
+const home = document.querySelectorAll(".home");
 const restartBackground = document.querySelector(".restart-background");
 const resultScoreCount = document.querySelectorAll(".result-score-count");
 let startGame = false;
@@ -57,35 +58,35 @@ function spawnFlower(){
         background.appendChild(flower);
         if(objects[index] == "flower1"){
             flower.addEventListener("click", () => {
-                    flower.classList.add("hide")
+                    flower.classList.add("fadeOut")
                     score = score + 10;
             })
         }
         if(objects[index] == "flower2"){
             flower.addEventListener("click", () => {
-                flower.classList.add("hide")
+                flower.classList.add("fadeOut")
                 score = score + 5;
         })
         }
         if(objects[index] == "leaf1"){
             flower.addEventListener("click", () => {
-                flower.classList.add("hide")
+                flower.classList.add("fadeOut")
         })
         }
         if(objects[index] == "leaf2"){
             flower.addEventListener("click", () => {
-                flower.classList.add("hide")
+                flower.classList.add("fadeOut")
         })
         }
         if(objects[index] == "twig1"){
             flower.addEventListener("click", () => {
-                flower.classList.add("hide")
+                flower.classList.add("fadeOut")
                 score = score -5;
         })
         }
         if(objects[index] == "twig2"){
             flower.addEventListener("click", () => {
-                flower.classList.add("hide")
+                flower.classList.add("fadeOut")
                 score = score -10;
         })
         }
@@ -191,14 +192,14 @@ startButtton.addEventListener("click", () => {
     startGame = true
     previewGame = false
     remove()
-    time = 100
+    time = 70
     timerCount.innerHTML = `${time} s`;
     score = 0
     gamebackground.classList.remove("hide")
     start()
 })
 
-restart.forEach(function(item){
+home.forEach(function(item){
     item.addEventListener("click", () => {
     startContainer.classList.remove("hide")
     game.classList.add("hide")
@@ -208,5 +209,19 @@ restart.forEach(function(item){
     previewGame = true
     gamebackground.classList.add("hide")
     remove()
+})
+})
+
+restart.forEach(function(item){
+    item.addEventListener("click", () => {
+    goodJob.classList.add("hide")
+    wellDone.classList.add("hide")
+    game.remove("hide")
+    remove()
+    time = 70
+    startGame = true
+    timerCount.innerHTML = `${time} s`;
+    score = 0
+    start()
 })
 })
