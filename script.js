@@ -216,7 +216,7 @@ restart.forEach(function(item){
     item.addEventListener("click", () => {
     goodJob.classList.add("hide")
     wellDone.classList.add("hide")
-    game.remove("hide")
+    game.classList.remove("hide")
     remove()
     time = 70
     startGame = true
