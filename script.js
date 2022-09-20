@@ -58,36 +58,48 @@ function spawnFlower(){
         background.appendChild(flower);
         if(objects[index] == "flower1"){
             flower.addEventListener("click", () => {
+                if(!flower.classList.contains("fadeOut")){
                     flower.classList.add("fadeOut")
                     score = score + 10;
+                }
             })
         }
         if(objects[index] == "flower2"){
             flower.addEventListener("click", () => {
-                flower.classList.add("fadeOut")
-                score = score + 5;
-        })
+                if(!flower.classList.contains("fadeOut")){
+                    flower.classList.add("fadeOut")
+                    score = score + 5;
+                }
+            })
         }
         if(objects[index] == "leaf1"){
             flower.addEventListener("click", () => {
-                flower.classList.add("fadeOut")
-        })
+                if(!flower.classList.contains("fadeOut")){
+                    flower.classList.add("fadeOut")
+                }
+            })
         }
         if(objects[index] == "leaf2"){
             flower.addEventListener("click", () => {
-                flower.classList.add("fadeOut")
-        })
+                if(!flower.classList.contains("fadeOut")){
+                    flower.classList.add("fadeOut")
+                }
+            })
         }
         if(objects[index] == "twig1"){
             flower.addEventListener("click", () => {
-                flower.classList.add("fadeOut")
-                score = score -5;
-        })
+                if(!flower.classList.contains("fadeOut")){
+                    flower.classList.add("fadeOut")
+                    score = score -5;
+                }
+            })
         }
         if(objects[index] == "twig2"){
             flower.addEventListener("click", () => {
-                flower.classList.add("fadeOut")
-                score = score -10;
+                if(!flower.classList.contains("fadeOut")){
+                    flower.classList.add("fadeOut")
+                    score = score -10;
+                }
         })
         }
 }
@@ -217,6 +229,7 @@ restart.forEach(function(item){
     goodJob.classList.add("hide")
     wellDone.classList.add("hide")
     game.classList.remove("hide")
+    restartBackground.classList.add("hide")
     remove()
     time = 70
     startGame = true
