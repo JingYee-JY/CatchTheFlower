@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable =no">
     <link rel="stylesheet" 
     href="https://fonts.googleapis.com/css?family=Lilita One">
     <title>Catch the Flower</title>
@@ -34,9 +34,15 @@
             </button>
         </div>
         <div class ="game hide">
-                <p class="timer-count">00 s</p>
-                <p class="score-count"><b>0 pt</b></p>
-            <p class="text">Catch as many flower as you can before time is up.</p>
+                <div class="point">
+                    <p class="text">Tap on as many flowers as you can before time is up.</p>
+                    <div class="mark">
+                        <div class="timer-count">00 s</div>
+                        <div class="score-count"><b>0 pt</b></div>
+                    </div>
+                </div>
+              
+               
         </div>
             <div class="restart-background hide">
                 <div class="try-harder-background hide">
@@ -59,7 +65,7 @@
                     <button class="restart">
                         <img class="btn" src="./img/playAgain.png">
                     </button>
-                    <button class="home">
+                    <button class="home" onclick="window.location.href='https://gimme.sg/activations/dementia/';">
                         <img class="btn" src="./img/home.png">
                     </button>
                 </div>            

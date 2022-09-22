@@ -4,9 +4,9 @@ const scoreCount = document.querySelector(".score-count");
 const goodJob = document.querySelector(".try-harder-background");
 const wellDone = document.querySelector(".well-done-background");
 const restart = document.querySelectorAll(".restart");
-const home = document.querySelectorAll(".home");
 const restartBackground = document.querySelector(".restart-background");
 const resultScoreCount = document.querySelectorAll(".result-score-count");
+
 let startGame = false;
 let previewGame = true;
 let player = {step: 1}
@@ -211,7 +211,7 @@ startButtton.addEventListener("click", () => {
     start()
 })
 
-home.forEach(function(item){
+restart.forEach(function(item){
     item.addEventListener("click", () => {
     startContainer.classList.remove("hide")
     game.classList.add("hide")
@@ -224,17 +224,3 @@ home.forEach(function(item){
 })
 })
 
-restart.forEach(function(item){
-    item.addEventListener("click", () => {
-    goodJob.classList.add("hide")
-    wellDone.classList.add("hide")
-    game.classList.remove("hide")
-    restartBackground.classList.add("hide")
-    remove()
-    time = 70
-    startGame = true
-    timerCount.innerHTML = `${time} s`;
-    score = 0
-    start()
-})
-})
