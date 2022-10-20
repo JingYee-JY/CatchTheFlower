@@ -17,7 +17,7 @@
             <img class="title" src="./img/Title.png">
             <div class="preview">
                 <div class="pre">
-                    <img class="preImage" src="./img/Blue Flower.png">
+                    <img class="pre" src="./img/Blue Flower.png">
                 </div>
                 <div class="pre">
                     <img class="pre" src="./img/Twig 2.png">
@@ -31,6 +31,19 @@
             </div>
             <button class="startButtton">
                 <img class="btn" src="./img/startGame.png">
+            </button>
+        </div>
+        <div class="selection hide">
+            <img class="title" src="./img/Title.png">
+            <p>Select difficulty</p>
+            <button class="easyButtton">
+                <img class="btn" src="./img/easy.png">
+            </button>
+            <button class="normalButtton">
+                <img class="btn" src="./img/normal.png">
+            </button>
+            <button class="hardButtton">
+                <img class="btn" src="./img/hard.png">
             </button>
         </div>
         <div class ="game hide">
@@ -65,11 +78,15 @@
                     <button class="restart">
                         <img class="btn" src="./img/playAgain.png">
                     </button>
-                    <button class="home" onclick="window.location.href='https://gimme.sg/activations/dementia/';">
+                    <button class="home">
                         <img class="btn" src="./img/home.png">
                     </button>
                 </div>            
-            </div>             
+            </div>          
+            <audio id="click" src="sound/click.wav"></audio>
+            <audio id="completed" src="./sound/completed.wav"></audio>
+            <audio id="clap" src="./sound/clap.wav"></audio>
+
         <script src="script.js"></script>
 </body>
 </html>

@@ -6,22 +6,32 @@ const wellDone = document.querySelector(".well-done-background");
 const restart = document.querySelectorAll(".restart");
 const restartBackground = document.querySelector(".restart-background");
 const resultScoreCount = document.querySelectorAll(".result-score-count");
+const homeButton = document.querySelectorAll(".home")
+
+const clickSound = document.getElementById("click")
+const completed = document.getElementById("completed")
+const clap = document.getElementById("clap")
 
 let startGame = false;
-let previewGame = true;
-let player = {step: 1}
+let player = {step: 1.2}
 let time;
 let score = 0;
 let border
+let flowerWidth
+let spawnPoint
+let difficulty
 
 var objects = [ "flower1","flower2", "leaf1", "twig1","flower1","flower2", "leaf2", "twig2"]
+
 function updateCountDown(){
-    if(startGame == true || previewGame == true){
+    if(startGame == true){
         timerCount.innerHTML = `${time} s`;
         scoreCount.innerHTML = `${score} pt`;
         if(time == 0){
             startGame = false
-            if(score >= 100){
+            if(score >= 50 && difficulty == 1 || score >= 75 && difficulty == 2 || score >= 100 && difficulty == 3){
+                clap.currentTime = 0
+                clap.play()
                 game.classList.add("hide")
                 restartBackground.classList.remove("hide")
                 wellDone.classList.remove("hide")
@@ -30,6 +40,8 @@ function updateCountDown(){
                 })
             }
             else{
+                completed.currentTime = 0
+                completed.play()
                 game.classList.add("hide")
                 restartBackground.classList.remove("hide")
                 goodJob.classList.remove("hide")
@@ -53,12 +65,39 @@ function spawnFlower(){
         var index = randomInt(objects.length);
         flower.classList.add(objects[index])
         flower.y = 0;
+        if(border.width < 500){
+            flowerWidth = 100
+            spawnPoint = 110
+            if(difficulty == 1){
+                player.step = 2.5
+            }
+            if(difficulty == 2){
+                player.step = 3.5
+            }
+            if(difficulty == 3){
+                player.step = 4.5
+            }            
+        }
+        if(border.width > 500){
+            flowerWidth = 200
+            spawnPoint = 210
+            if(difficulty == 1){
+                player.step = 4
+            }
+            if(difficulty == 2){
+                player.step = 6
+            }
+            if(difficulty == 3){
+                player.step = 8
+            }            
+        }
         flower.style.top = flower.y + 'px';
-        flower.style.left = Math.floor(Math.random() * (border.width - 100)) + 'px';
+        flower.style.left = Math.floor(Math.random() * (border.width - flowerWidth)) + 'px';
         background.appendChild(flower);
         if(objects[index] == "flower1"){
             flower.addEventListener("click", () => {
                 if(!flower.classList.contains("fadeOut")){
+                    playClickSound()
                     flower.classList.add("fadeOut")
                     score = score + 10;
                 }
@@ -67,6 +106,7 @@ function spawnFlower(){
         if(objects[index] == "flower2"){
             flower.addEventListener("click", () => {
                 if(!flower.classList.contains("fadeOut")){
+                    playClickSound()
                     flower.classList.add("fadeOut")
                     score = score + 5;
                 }
@@ -74,32 +114,36 @@ function spawnFlower(){
         }
         if(objects[index] == "leaf1"){
             flower.addEventListener("click", () => {
-                if(!flower.classList.contains("fadeOut")){
-                    flower.classList.add("fadeOut")
+                if(!flower.classList.contains("wrong")){
+                    playClickSound()
+                    flower.classList.add("wrong")
                 }
             })
         }
         if(objects[index] == "leaf2"){
             flower.addEventListener("click", () => {
-                if(!flower.classList.contains("fadeOut")){
-                    flower.classList.add("fadeOut")
+                if(!flower.classList.contains("wrong")){
+                    playClickSound()
+                    flower.classList.add("wrong")
                 }
             })
         }
         if(objects[index] == "twig1"){
             flower.addEventListener("click", () => {
-                if(!flower.classList.contains("fadeOut")){
-                    flower.classList.add("fadeOut")
+                if(!flower.classList.contains("wrong")){
+                    playClickSound()
+                    flower.classList.add("wrong")
                     score = score -5;
                 }
             })
         }
         if(objects[index] == "twig2"){
             flower.addEventListener("click", () => {
-                if(!flower.classList.contains("fadeOut")){
-                    flower.classList.add("fadeOut")
+                if(!flower.classList.contains("wrong")){
+                    playClickSound()
+                    flower.classList.add("wrong")
                     score = score -10;
-                }
+                }      
         })
         }
 }
@@ -121,7 +165,7 @@ function moveFlower(){
     
     function condition(item){
         console.log(Math.floor(border.height /4))
-        if(item.y >= Math.floor(border.height /4) && item.y < (Math.floor(border.height /4) + 1)){
+        if(item.y >= spawnPoint && item.y < (spawnPoint + player.step)){
             spawnFlower();
         }
         if(item.y > border.height){
@@ -194,33 +238,88 @@ setInterval(updateScore, 1)
 
 const startContainer = document.querySelector(".start");
 const startButtton = document.querySelector(".startButtton");
+const easyButtton = document.querySelector(".easyButtton");
+const normalButtton = document.querySelector(".normalButtton");
+const hardButtton = document.querySelector(".hardButtton");
+const selection = document.querySelector(".selection");
 const game = document.querySelector(".game");
 const gamebackground = document.querySelector(".game-background");
 
-
 startButtton.addEventListener("click", () => {
-    startContainer.classList.add("hide")
+    playClickSound()
+    let delay = setTimeout(() => {
+        startContainer.classList.add("hide")
+        selection.classList.remove("hide")
+    }, 200);
+})
+
+easyButtton.addEventListener("click", () => {
+    playClickSound()
+    let delay = setTimeout(() => {
+        difficulty = 1
+        began()
+    }, 200);
+})
+
+normalButtton.addEventListener("click", () => {
+    playClickSound()
+    let delay = setTimeout(() => {
+        difficulty = 2
+        began()
+    }, 200);
+})
+
+hardButtton.addEventListener("click", () => {
+    playClickSound()
+    let delay = setTimeout(() => {
+        difficulty = 3
+        began()
+    }, 200);
+})
+
+function began(){
+    selection.classList.add("hide")
     game.classList.remove("hide")
     startGame = true
-    previewGame = false
     remove()
-    time = 70
+    time = 30
     timerCount.innerHTML = `${time} s`;
     score = 0
     gamebackground.classList.remove("hide")
     start()
-})
+}
 
 restart.forEach(function(item){
     item.addEventListener("click", () => {
-    startContainer.classList.remove("hide")
-    game.classList.add("hide")
-    goodJob.classList.add("hide")
-    wellDone.classList.add("hide")
-    restartBackground.classList.add("hide")
-    previewGame = true
-    gamebackground.classList.add("hide")
+        playClickSound()
+    let delay = setTimeout(() => {
+        startContainer.classList.remove("hide")
+        game.classList.add("hide")
+        goodJob.classList.add("hide")
+        wellDone.classList.add("hide")
+        restartBackground.classList.add("hide")
+        gamebackground.classList.add("hide")
     remove()
+    }, 200);
 })
 })
 
+homeButton.forEach(function(item){
+    item.addEventListener("click", () => {
+        playClickSound()
+        let delay = setTimeout(() => {
+          location.assign('https://gimme.sg/activations/dementia/');
+        }, 200);
+    })
+})
+
+function playClickSound(){
+    console.log(clickSound)
+    clickSound.currentTime = 0
+    clickSound.play()
+}
+
+/*prevent double tag zoom*/
+document.addEventListener('dblclick', function(event) {
+event.preventDefault();
+}, { passive: false });
