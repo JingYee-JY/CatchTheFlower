@@ -20,6 +20,7 @@ let border
 let flowerWidth
 let spawnPoint
 let difficulty
+let once
 
 var objects = [ "flower1","flower2", "leaf1", "twig1","flower1","flower2", "leaf2", "twig2"]
 
@@ -30,8 +31,6 @@ function updateCountDown(){
         if(time == 0){
             startGame = false
             if(score >= 50 && difficulty == 1 || score >= 75 && difficulty == 2 || score >= 100 && difficulty == 3){
-                clap.currentTime = 0
-                clap.play()
                 game.classList.add("hide")
                 restartBackground.classList.remove("hide")
                 wellDone.classList.remove("hide")
@@ -41,8 +40,6 @@ function updateCountDown(){
             }
             else{
                 completed.currentTime = 0
-                completed.play()
-                game.classList.add("hide")
                 restartBackground.classList.remove("hide")
                 goodJob.classList.remove("hide")
                 resultScoreCount.forEach(function(item){
@@ -53,9 +50,36 @@ function updateCountDown(){
         time--;
     }
 }
+
 function updateScore(){
     if(startGame == true){
         scoreCount.innerHTML = `${score} pt`;
+    }
+}
+
+function checkEnd(){
+    if(time > 10){
+        if(score >= 50 && difficulty == 1 || score >= 75 && difficulty == 2 || score >= 100 && difficulty == 3){
+            let delay = setTimeout(() => {
+                if(!once){
+                    clap.currentTime = 0
+                    clap.play()
+                    once = true
+                    return
+                }
+            },(time + 1) * 1000)
+        }
+        else{
+            let delay = setTimeout(() => {
+                if(!once){
+                    completed.currentTime = 0
+                    completed.play()
+                    once = true
+                    return
+                }
+            },(time + 1) * 1000)
+        }
+        
     }
 }
 
@@ -94,57 +118,56 @@ function spawnFlower(){
         flower.style.top = flower.y + 'px';
         flower.style.left = Math.floor(Math.random() * (border.width - flowerWidth)) + 'px';
         background.appendChild(flower);
-        if(objects[index] == "flower1"){
+        function addCorrectInput(point){
+            flower.addEventListener("touchstart", () => {
+                if(!flower.classList.contains("fadeOut")){
+                    playClickSound()
+                    flower.classList.add("fadeOut")
+                    score = score + point;
+                }
+                checkEnd()
+            })
             flower.addEventListener("click", () => {
                 if(!flower.classList.contains("fadeOut")){
                     playClickSound()
                     flower.classList.add("fadeOut")
-                    score = score + 10;
+                    score = score + point;
                 }
+                checkEnd()
             })
+        }
+        function addWrongInput(point){
+            flower.addEventListener("touchstart", () => {
+                if(!flower.classList.contains("wrong")){
+                    playClickSound()
+                    flower.classList.add("wrong")
+                    score = score + point;
+                }
+                checkEnd()
+            })
+            flower.addEventListener("click", () => {
+                if(!flower.classList.contains("wrong")){
+                    playClickSound()
+                    flower.classList.add("wrong")
+                    score = score + point;
+                }
+                checkEnd()
+            })
+        }
+        if(objects[index] == "flower1"){
+            addCorrectInput(10)
         }
         if(objects[index] == "flower2"){
-            flower.addEventListener("click", () => {
-                if(!flower.classList.contains("fadeOut")){
-                    playClickSound()
-                    flower.classList.add("fadeOut")
-                    score = score + 5;
-                }
-            })
+            addCorrectInput(5)
         }
-        if(objects[index] == "leaf1"){
-            flower.addEventListener("click", () => {
-                if(!flower.classList.contains("wrong")){
-                    playClickSound()
-                    flower.classList.add("wrong")
-                }
-            })
-        }
-        if(objects[index] == "leaf2"){
-            flower.addEventListener("click", () => {
-                if(!flower.classList.contains("wrong")){
-                    playClickSound()
-                    flower.classList.add("wrong")
-                }
-            })
+        if(objects[index] == "leaf1" || objects[index] == "leaf2"){
+            addWrongInput(0)
         }
         if(objects[index] == "twig1"){
-            flower.addEventListener("click", () => {
-                if(!flower.classList.contains("wrong")){
-                    playClickSound()
-                    flower.classList.add("wrong")
-                    score = score -5;
-                }
-            })
+            addWrongInput(-5)
         }
         if(objects[index] == "twig2"){
-            flower.addEventListener("click", () => {
-                if(!flower.classList.contains("wrong")){
-                    playClickSound()
-                    flower.classList.add("wrong")
-                    score = score -10;
-                }      
-        })
+            addWrongInput(-10)     
         }
 }
 
@@ -248,6 +271,7 @@ const gamebackground = document.querySelector(".game-background");
 startButtton.addEventListener("click", () => {
     playClickSound()
     let delay = setTimeout(() => {
+        once = false
         startContainer.classList.add("hide")
         selection.classList.remove("hide")
     }, 200);
