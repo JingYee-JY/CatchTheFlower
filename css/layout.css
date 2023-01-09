@@ -17,8 +17,8 @@
 
 body {
   background-color: var(--primary);
-  width: 100%;
-  height: 100%;
+  width: var(--fullwidth);
+  height: var(--fullwidth);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,8 +39,8 @@ body {
   flex-direction: column;
   place-items: center;
   gap: 25px;
-  width: 100%;
-  height: 100%;
+  width: var(--fullwidth);
+  height: var(--fullwidth);
   background-color: var(--primary);
   top: 0;
 }
@@ -49,7 +49,7 @@ body {
 .selectionPage,
 .instructionPage{
     background-image: url("../img/top.png");
-    background-size: 100%;
+    background-size: var(--fullwidth);
     background-repeat: no-repeat;
     background-position: top;
 }
@@ -169,8 +169,8 @@ body {
 .rotate{
     display: block;
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: var(--fullwidth);
+    height: var(--fullwidth);
     z-index: -10;
 }
 
@@ -178,8 +178,8 @@ body {
     .rotate{
         display: block;
         position: fixed;
-        width: 100%;
-        height: 100%;
+        width: var(--fullwidth);
+        height: var(--fullwidth);
         z-index: 100;
     }
 }

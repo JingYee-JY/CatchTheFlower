@@ -12,6 +12,8 @@ const instructionPage = document.querySelector(".instructionPage");
 const gamePage = document.querySelector(".gamePage");
 const finalPage = document.querySelector(".finalPage");
 
+const details = document.querySelector(".details");
+const text = document.querySelector(".text");
 const background = document.querySelector(".background");
 const countDown = document.querySelector(".countDown");
 const scoreCount = document.querySelector(".score-count");
@@ -24,14 +26,19 @@ const clap = document.getElementById("clap")
 let startGame = false;
 let player = {step: 1.2}
 let time;
+let totalFlower;
 let countDownTimer;
 let countingDown;
 let score = 0;
 let border
 let flowerWidth
 let spawnPoint
-let difficulty
 let once
+
+//CHANGE HERE ONLY FOR WIN CONDITION FOR DIFFERENT LEVEL
+let easyTotalFlower = 20;
+let normalTotalFlower = 30;
+let hardTotalFlower = 40;
 
 var objects = [ "flower1","flower2", "leaf1", "flower3"]
 
@@ -66,7 +73,7 @@ function updateScore(){
 }
 
 function checkEnd(){
-    if(score == 20){
+    if(score == totalFlower){
         let delay = setTimeout(() => {
             if(!once){
                 clap.currentTime = 0
@@ -88,32 +95,41 @@ function spawnFlower(){
         flower.classList.add("object")
         flower.classList.add(objects[index])
         flower.y = 0;
+
+        //Checking phone size
+        //phone & computer
         if(border.width < 500){
             flowerWidth = 150
             spawnPoint = 110
-            if(difficulty == 1){
+
+            //CHANGE HERE ONLY FOR OBJECT SPEED FOR PHONE AND COMPUTER
+            if(totalFlower == easyTotalFlower){
                 player.step = 2.5
             }
-            if(difficulty == 2){
+            if(totalFlower == normalTotalFlower){
                 player.step = 3.5
             }
-            if(difficulty == 3){
+            if(totalFlower == hardTotalFlower){
                 player.step = 4.5
             }            
         }
+        //ipad
         if(border.width > 500){
             flowerWidth = 250
             spawnPoint = 210
-            if(difficulty == 1){
+
+            //CHANGE HERE ONLY FOR OBJECT SPEED FOR IPAD
+            if(totalFlower == easyTotalFlower){
                 player.step = 4
             }
-            if(difficulty == 2){
+            if(totalFlower == normalTotalFlower){
                 player.step = 6
             }
-            if(difficulty == 3){
+            if(totalFlower == hardTotalFlower){
                 player.step = 8
             }            
         }
+
         flower.style.top = flower.y + 'px';
         flower.style.left = Math.floor(Math.random() * (border.width - flowerWidth)) + 'px';
         background.appendChild(flower);
@@ -250,7 +266,7 @@ startButtton.addEventListener("click", () => {
 easyButtton.addEventListener("click", () => {
     playClickSound()
     let delay = setTimeout(() => {
-        difficulty = 1
+        totalFlower = easyTotalFlower
         began()
     }, 200);
 })
@@ -258,7 +274,7 @@ easyButtton.addEventListener("click", () => {
 normalButtton.addEventListener("click", () => {
     playClickSound()
     let delay = setTimeout(() => {
-        difficulty = 2
+        totalFlower = normalTotalFlower
         began()
     }, 200);
 })
@@ -266,7 +282,7 @@ normalButtton.addEventListener("click", () => {
 hardButtton.addEventListener("click", () => {
     playClickSound()
     let delay = setTimeout(() => {
-        difficulty = 3
+        totalFlower = hardTotalFlower
         began()
     }, 200);
 })
@@ -285,6 +301,14 @@ function began(){
     selection.classList.add("hide")
     gamePage.classList.remove("hide")
     countDown.classList.remove("hide");
+    details.innerHTML = `
+    <p>
+    Successfully Tab a <br>
+    flower will get 1 <br>
+    point. Once Get ${totalFlower} <br>
+    point will win the game
+    </p>`
+    text.innerHTML = `Catch ${totalFlower} flowers`
     startGame = true
     remove()
     countDownTimer = 3;
