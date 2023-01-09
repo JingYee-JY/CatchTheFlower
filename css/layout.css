@@ -145,7 +145,7 @@ body {
 }
 
 .details p{
-    margin-top: 0px;
+    margin-top: 0px !important;
 }
 
 /*FinalPage*/
@@ -186,6 +186,13 @@ body {
 
 /*ipad*/
 @media screen and (min-width:768px) and (max-width:1023px) {
+    
+    .startPage,
+    .selectionPage,
+    .instructionPage{
+        background-position: 0% -15%;
+    }
+
     .title {
         width: 55%;
     }
@@ -196,12 +203,18 @@ body {
 
     /*SelectionPage*/
     .choices {
+        margin-top: 90px;
         font-size: 50px;
+        gap: 25px;
     }
 
     /*InstructionPage*/
     .instructionPage {
         font-size: 60px;
+    }
+
+    .instructionPage p{
+        margin-top: 90px;
     }
 
     .details {

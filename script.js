@@ -25,6 +25,7 @@ let startGame = false;
 let player = {step: 1.2}
 let time;
 let countDownTimer;
+let countingDown;
 let score = 0;
 let border
 let flowerWidth
@@ -49,11 +50,11 @@ function updateTimer(){
 
 function updateCountDown(){
     if(startGame == true && countDownTimer > 0){
-        countDown.classList.remove("hide");
         countDown.innerHTML = `<p>${countDownTimer}</p>`;
         countDownTimer -= 1;
     }
     else{
+        clearInterval(countingDown)
         countDown.classList.add("hide");
     }
 }
@@ -101,7 +102,7 @@ function spawnFlower(){
             }            
         }
         if(border.width > 500){
-            flowerWidth = 200
+            flowerWidth = 250
             spawnPoint = 210
             if(difficulty == 1){
                 player.step = 4
@@ -234,7 +235,6 @@ function remove(){
     })
 }
 
-setInterval(updateCountDown, 1000)
 setInterval(updateTimer, 1000)
 setInterval(updateScore, 1)
 
@@ -276,6 +276,7 @@ beganButton.addEventListener("click", () => {
     let delay = setTimeout(() => {
         instructionPage.classList.add("hide")
         start()
+        countingDown = setInterval(updateCountDown, 1000);
     }, 200);
 })
 
@@ -283,9 +284,11 @@ function began(){
     instructionPage.classList.remove("hide")
     selection.classList.add("hide")
     gamePage.classList.remove("hide")
+    countDown.classList.remove("hide");
     startGame = true
     remove()
     countDownTimer = 3;
+    countDown.innerHTML = `<p>${countDownTimer}</p>`;
     time = 240
     score = 0
 }
@@ -296,9 +299,7 @@ again.addEventListener("click", () => {
         startPage.classList.remove("hide")
         gamePage.classList.add("hide")
         finalPage.classList.add("hide")
-        wellDone.classList.add("hide")
-        finalPage.classList.add("hide")
-    remove()
+        remove()
     }, 200);
 })
 
