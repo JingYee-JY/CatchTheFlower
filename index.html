@@ -5,84 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable =no">
     <link rel="stylesheet" 
-    href="https://fonts.googleapis.com/css?family=Lilita One">
+    href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;900&display=swap">
     <title>Catch the Flower</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
-        <div class = "game-background hide">
-            <div class = "background"></div>
-        </div>
-        <div class="start">
+
+        <div class="startPage">
             <img class="title" src="./img/Title.png">
-            <div class="preview">
-                <div class="pre">
-                    <img class="pre" src="./img/Blue Flower.png">
-                </div>
-                <div class="pre">
-                    <img class="pre" src="./img/Twig 2.png">
-                </div>
-                <div class="pre">
-                    <img class="pre" src="./img/Leaf 2.png">
-                </div>
-                <div class="pre">
-                    <img class="pre" src="./img/Flower Orchid.png">
-                </div>
+            <img class="preview" src="./img/preview.png">
+            <img class="start button" src="./img/startGame.png">
+        </div>
+
+        <div class="selectionPage hide">
+            <img class="title" src="./img/Title.png">
+            <div class="choices">
+                <p>Choose one</p>
+                <img class="easy button" src="./img/easy.png">
+                <img class="normal button" src="./img/normal.png">
+                <img class="hard button" src="./img/hard.png">
+              </div>
+        </div>
+
+        <div class="instructionPage hide">
+            <img class="title" src="./img/Title.png">
+            <p>How to play</p>
+            <div class="details">
+                <p>
+                    Successfully Tab a <br>
+                    flower will get 1 <br>
+                    point. Once Get 20 <br>
+                    point will win the game
+                </p>
             </div>
-            <button class="startButtton">
-                <img class="btn" src="./img/startGame.png">
-            </button>
+            <img class="startGame button" src="./img/startGame.png">
         </div>
-        <div class="selection hide">
-            <img class="title" src="./img/Title.png">
-            <p>Select difficulty</p>
-            <button class="easyButtton">
-                <img class="btn" src="./img/easy.png">
-            </button>
-            <button class="normalButtton">
-                <img class="btn" src="./img/normal.png">
-            </button>
-            <button class="hardButtton">
-                <img class="btn" src="./img/hard.png">
-            </button>
-        </div>
-        <div class ="game hide">
-                <div class="point">
-                    <p class="text">Tap on as many flowers as you can before time is up.</p>
-                    <div class="mark">
-                        <div class="timer-count">00 s</div>
-                        <div class="score-count"><b>0 pt</b></div>
-                    </div>
+
+        <div class ="gamePage hide">
+            <div class="countDown">
+                <p>3</p>
+            </div>
+            <div class="point">
+                <div class="mark">
+                    <p class="text">Catch 20 flowers</p>
+                    <div class="score-count"><b>0 pt</b></div>
                 </div>
-              
-               
+                <div class = "background"></div>
+                <img class="bottomBar" src="./img/gameBottom.png">
+            </div>
         </div>
-            <div class="restart-background hide">
-                <div class="try-harder-background hide">
-                    <img class="endTitle" src="./img/Title.png" alt="">
-                    <div class="popUp" style="background-image: url(./img/tryHarder.png);">
-                        <div class="result-score-count"></div>
-                    </div>
-                    <button class="restart">
-                        <img class="btn" src="./img/playAgain.png">
-                    </button>
-                    <button class="home">
-                        <img class="btn" src="./img/home.png">
-                    </button>
-                </div>
-                <div class="well-done-background hide">
-                    <img class="endTitle" src="./img/Title.png">
-                    <div class="popUp" style="background-image: url(./img/wellDone.png);">
-                        <div class="result-score-count"></div>
-                    </div> 
-                    <button class="restart">
-                        <img class="btn" src="./img/playAgain.png">
-                    </button>
-                    <button class="home">
-                        <img class="btn" src="./img/home.png">
-                    </button>
-                </div>            
-            </div>          
+
+        <div class="finalPage hide">
+            <img class="result">
+            <div class="buttons">
+              <img class="again roundedButton" src="./img/againBtn.png">
+              <img class="home roundedButton" src="./img/home.png">
+            </div>
+        </div>
+
             <audio id="click" src="sound/click.wav"></audio>
             <audio id="completed" src="./sound/completed.wav"></audio>
             <audio id="clap" src="./sound/clap.wav"></audio>

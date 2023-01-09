@@ -1,5 +1,5 @@
 body{
-    background-color: #F8E7D4;
+    background-color: #46467A;
     width: 100%;
     height: 100%;
     display: flex;
@@ -16,7 +16,7 @@ html{
     overflow: hidden;
 }
 *{
-    font-family: "Lilita One";
+    font-family: 'Londrina Solid', cursive;
 }
 
 .startButtton:active,.restart:active,.home:active{
@@ -42,34 +42,47 @@ html{
 }
 
 .flower1{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 5px;
     box-shadow: 3px 3px 3px blink;
     position: absolute;
     display: flex;
-    background-image: url("./img/Blue Flower.png");
+    background-image: url("./img/Flower1.png");
     background-size: contain;
     justify-content: center;
     text-align: center;
     background-repeat: no-repeat;
 }
 .flower2{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 5px;
     position: absolute;
     display: flex;
     box-shadow: 3px 3px 3px blink;
-    background-image: url("./img/Flower Orchid.png");
+    background-image: url("./img/Flower2.png");
+    background-size: contain;
+    justify-content: center;
+    text-align: center;
+    background-repeat: no-repeat;
+}
+.flower3{
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    position: absolute;
+    display: flex;
+    box-shadow: 3px 3px 3px blink;
+    background-image: url("./img/Flower3.png");
     background-size: contain;
     justify-content: center;
     text-align: center;
     background-repeat: no-repeat;
 }
 .leaf1{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 5px;
     position: absolute;
     display: flex;
@@ -80,45 +93,7 @@ html{
     text-align: center;
     background-repeat: no-repeat;
 }
-.leaf2{
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    position: absolute;
-    display: flex;
-    box-shadow: 3px 3px 3px blink;
-    background-image: url("./img/Leaf 2.png");
-    background-size: contain;
-    justify-content: center;
-    text-align: center;
-    background-repeat: no-repeat;
-}
-.twig1{
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px blink;
-    position: absolute;
-    display: flex;
-    background-image: url("./img/Twig.png");
-    background-size: contain;
-    justify-content: center;
-    text-align: center;
-    background-repeat: no-repeat;
-}
-.twig2{
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px blink;
-    position: absolute;
-    display: flex;
-    background-image: url("./img/Twig 2.png");
-    background-size: contain;
-    justify-content: center;
-    text-align: center;
-    background-repeat: no-repeat;
-}
+
 .hide{
     display: none;
     visibility:hidden;
@@ -149,12 +124,13 @@ button{
 }
 .start,
 .selection,
+.instructionPage,
 .try-harder-background,
 .well-done-background{
     position: absolute;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     place-items: center;
     gap: 2vh;
@@ -162,8 +138,44 @@ button{
     height: 100%;
 }
 
+.start,
+.instructionPage,
+.selection{
+    background-image: url(./img/top.png);
+    background-size: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.instructionPage{
+    color: white;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    gap: 10px;
+    margin: 0%;
+}
+
+.instructionPage p{
+    margin: 0%;
+}
+
+.details{
+    background-color: white;
+    color: #46467A;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
 .selection p{
-    color: #140A2E;
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0%;
 }
 .title{
     margin: 20px;
@@ -274,14 +286,12 @@ button{
     margin: 0%;
     padding: 0%;
     width:70%;
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 .preview{
-    display: grid;
-    width: 45vh;
-    height: 47vh;
-    gap: 3vh;
-    grid-template-columns: repeat(2, 22vh);
-    grid-template-rows: repeat(2, 22vh);
+    width: 90%;
+    height: auto;
 }
 .pre{
     width: 20vh;
@@ -293,8 +303,8 @@ button{
     width: 60%;
 }
 .btn{
-    width: 40vh;
-    height: 10vh;
+    width: 70%;
+    height: auto;
 }
 .game-background{
     width: 100%;
@@ -303,9 +313,9 @@ button{
     position: absolute;
     justify-content: center;
     align-items: center;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url("./img/BG.jpg");
+    background-image: url("./img/middle.png");
 }
 .endTitle{
     width: 30vh;

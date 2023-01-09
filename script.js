@@ -1,12 +1,21 @@
+const startButtton = document.querySelector(".start");
+const easyButtton = document.querySelector(".easy");
+const normalButtton = document.querySelector(".normal");
+const hardButtton = document.querySelector(".hard");
+const beganButton = document.querySelector(".startGame")
+const again = document.querySelector(".again");
+const home = document.querySelector(".home")
+
+const startPage = document.querySelector(".startPage");
+const selection = document.querySelector(".selectionPage");
+const instructionPage = document.querySelector(".instructionPage");
+const gamePage = document.querySelector(".gamePage");
+const finalPage = document.querySelector(".finalPage");
+
 const background = document.querySelector(".background");
-const timerCount = document.querySelector(".timer-count");
+const countDown = document.querySelector(".countDown");
 const scoreCount = document.querySelector(".score-count");
-const goodJob = document.querySelector(".try-harder-background");
-const wellDone = document.querySelector(".well-done-background");
-const restart = document.querySelectorAll(".restart");
-const restartBackground = document.querySelector(".restart-background");
-const resultScoreCount = document.querySelectorAll(".result-score-count");
-const homeButton = document.querySelectorAll(".home")
+const result = document.querySelector(".result");
 
 const clickSound = document.getElementById("click")
 const completed = document.getElementById("completed")
@@ -15,6 +24,7 @@ const clap = document.getElementById("clap")
 let startGame = false;
 let player = {step: 1.2}
 let time;
+let countDownTimer;
 let score = 0;
 let border
 let flowerWidth
@@ -22,64 +32,51 @@ let spawnPoint
 let difficulty
 let once
 
-var objects = [ "flower1","flower2", "leaf1", "twig1","flower1","flower2", "leaf2", "twig2"]
+var objects = [ "flower1","flower2", "leaf1", "flower3"]
 
-function updateCountDown(){
+function updateTimer(){
     if(startGame == true){
-        timerCount.innerHTML = `${time} s`;
-        scoreCount.innerHTML = `${score} pt`;
+        scoreCount.innerHTML = `<p>${score}</p>`;
         if(time == 0){
             startGame = false
-            if(score >= 50 && difficulty == 1 || score >= 75 && difficulty == 2 || score >= 100 && difficulty == 3){
-                game.classList.add("hide")
-                restartBackground.classList.remove("hide")
-                wellDone.classList.remove("hide")
-                resultScoreCount.forEach(function(item){
-                    item.innerHTML = `${score}`
-                })
+            completed.currentTime = 0
+            finalPage.classList.remove("hide")
+            result.src = "../img/lose.png"
             }
-            else{
-                completed.currentTime = 0
-                restartBackground.classList.remove("hide")
-                goodJob.classList.remove("hide")
-                resultScoreCount.forEach(function(item){
-                    item.innerHTML = `${score}`
-                })
-            }
-        }
-        time--;
+    }
+    time--;
+}
+
+function updateCountDown(){
+    if(startGame == true && countDownTimer > 0){
+        countDown.classList.remove("hide");
+        countDown.innerHTML = `<p>${countDownTimer}</p>`;
+        countDownTimer -= 1;
+    }
+    else{
+        countDown.classList.add("hide");
     }
 }
 
 function updateScore(){
     if(startGame == true){
-        scoreCount.innerHTML = `${score} pt`;
+        scoreCount.innerHTML = `<p>${score}</p>`;
     }
 }
 
 function checkEnd(){
-    if(time > 10){
-        if(score >= 50 && difficulty == 1 || score >= 75 && difficulty == 2 || score >= 100 && difficulty == 3){
-            let delay = setTimeout(() => {
-                if(!once){
-                    clap.currentTime = 0
-                    clap.play()
-                    once = true
-                    return
-                }
-            },(time + 1) * 1000)
-        }
-        else{
-            let delay = setTimeout(() => {
-                if(!once){
-                    completed.currentTime = 0
-                    completed.play()
-                    once = true
-                    return
-                }
-            },(time + 1) * 1000)
-        }
-        
+    if(score == 20){
+        let delay = setTimeout(() => {
+            if(!once){
+                clap.currentTime = 0
+                clap.play()
+                startGame = false
+                once = true
+                finalPage.classList.remove("hide")
+                result.src = "../img/win.png"
+                return
+            }
+        },1200)
     }
 }
 
@@ -87,10 +84,11 @@ function spawnFlower(){
         border = background.getBoundingClientRect();
         let flower = document.createElement("div");
         var index = randomInt(objects.length);
+        flower.classList.add("object")
         flower.classList.add(objects[index])
         flower.y = 0;
         if(border.width < 500){
-            flowerWidth = 100
+            flowerWidth = 150
             spawnPoint = 110
             if(difficulty == 1){
                 player.step = 2.5
@@ -118,30 +116,30 @@ function spawnFlower(){
         flower.style.top = flower.y + 'px';
         flower.style.left = Math.floor(Math.random() * (border.width - flowerWidth)) + 'px';
         background.appendChild(flower);
-        function addCorrectInput(point){
+
+        function addCorrectInput(){
             flower.addEventListener("touchstart", () => {
                 if(!flower.classList.contains("fadeOut")){
                     playClickSound()
                     flower.classList.add("fadeOut")
-                    score = score + point;
+                    score += 1;
+                    checkEnd()
                 }
-                checkEnd()
             })
             flower.addEventListener("click", () => {
                 if(!flower.classList.contains("fadeOut")){
                     playClickSound()
                     flower.classList.add("fadeOut")
-                    score = score + point;
+                    score += 1;
                 }
-                checkEnd()
             })
         }
-        function addWrongInput(point){
+
+        function addWrongInput(){
             flower.addEventListener("touchstart", () => {
                 if(!flower.classList.contains("wrong")){
                     playClickSound()
                     flower.classList.add("wrong")
-                    score = score + point;
                 }
                 checkEnd()
             })
@@ -149,25 +147,21 @@ function spawnFlower(){
                 if(!flower.classList.contains("wrong")){
                     playClickSound()
                     flower.classList.add("wrong")
-                    score = score + point;
+                    checkEnd()
                 }
-                checkEnd()
             })
         }
         if(objects[index] == "flower1"){
-            addCorrectInput(10)
+            addCorrectInput()
         }
         if(objects[index] == "flower2"){
-            addCorrectInput(5)
+            addCorrectInput()
         }
-        if(objects[index] == "leaf1" || objects[index] == "leaf2"){
+        if(objects[index] == "leaf1"){
             addWrongInput(0)
         }
-        if(objects[index] == "twig1"){
-            addWrongInput(-5)
-        }
-        if(objects[index] == "twig2"){
-            addWrongInput(-10)     
+        if(objects[index] == "flower3"){
+            addCorrectInput()
         }
 }
 
@@ -182,16 +176,14 @@ function moveFlower(){
     let flowers = document.querySelectorAll(".flower1");
     let flower1 = document.querySelectorAll(".flower2");
     let leafs = document.querySelectorAll(".leaf1");
-    let leaf1 = document.querySelectorAll(".leaf2");
-    let twigs = document.querySelectorAll(".twig1");
-    let twig1 = document.querySelectorAll(".twig2");
+    let flower3 = document.querySelectorAll(".flower3");
     
     function condition(item){
         console.log(Math.floor(border.height /4))
         if(item.y >= spawnPoint && item.y < (spawnPoint + player.step)){
             spawnFlower();
         }
-        if(item.y > border.height){
+        if(item.y > (border.height + flowerWidth)){
             background.removeChild(item);
         }
         item.y = item.y + player.step;
@@ -207,13 +199,7 @@ function moveFlower(){
     leafs.forEach(function(item){
         condition(item)
     })
-    leaf1.forEach(function(item){
-        condition(item)
-    })
-    twigs.forEach(function(item){
-        condition(item)
-    })
-    twig1.forEach(function(item){
+    flower3.forEach(function(item){
         condition(item)
     })
 }
@@ -232,9 +218,7 @@ function remove(){
     let flowers = document.querySelectorAll(".flower1");
     let flower1 = document.querySelectorAll(".flower2");
     let leafs = document.querySelectorAll(".leaf1");
-    let leaf1 = document.querySelectorAll(".leaf2");
-    let twigs = document.querySelectorAll(".twig1");
-    let twig1 = document.querySelectorAll(".twig2");
+    let flower3 = document.querySelectorAll(".flower3");
     
     flowers.forEach(function(item){
         background.removeChild(item);
@@ -245,34 +229,20 @@ function remove(){
     leafs.forEach(function(item){
         background.removeChild(item);
     })
-    leaf1.forEach(function(item){
-        background.removeChild(item);
-    })
-    twigs.forEach(function(item){
-        background.removeChild(item);
-    })
-    twig1.forEach(function(item){
+    flower3.forEach(function(item){
         background.removeChild(item);
     })
 }
 
 setInterval(updateCountDown, 1000)
+setInterval(updateTimer, 1000)
 setInterval(updateScore, 1)
-
-const startContainer = document.querySelector(".start");
-const startButtton = document.querySelector(".startButtton");
-const easyButtton = document.querySelector(".easyButtton");
-const normalButtton = document.querySelector(".normalButtton");
-const hardButtton = document.querySelector(".hardButtton");
-const selection = document.querySelector(".selection");
-const game = document.querySelector(".game");
-const gamebackground = document.querySelector(".game-background");
 
 startButtton.addEventListener("click", () => {
     playClickSound()
     let delay = setTimeout(() => {
         once = false
-        startContainer.classList.add("hide")
+        startPage.classList.add("hide")
         selection.classList.remove("hide")
     }, 200);
 })
@@ -301,40 +271,43 @@ hardButtton.addEventListener("click", () => {
     }, 200);
 })
 
+beganButton.addEventListener("click", () => {
+    playClickSound()
+    let delay = setTimeout(() => {
+        instructionPage.classList.add("hide")
+        start()
+    }, 200);
+})
+
 function began(){
+    instructionPage.classList.remove("hide")
     selection.classList.add("hide")
-    game.classList.remove("hide")
+    gamePage.classList.remove("hide")
     startGame = true
     remove()
-    time = 30
-    timerCount.innerHTML = `${time} s`;
+    countDownTimer = 3;
+    time = 240
     score = 0
-    gamebackground.classList.remove("hide")
-    start()
 }
 
-restart.forEach(function(item){
-    item.addEventListener("click", () => {
-        playClickSound()
+again.addEventListener("click", () => {
+    playClickSound()
     let delay = setTimeout(() => {
-        startContainer.classList.remove("hide")
-        game.classList.add("hide")
-        goodJob.classList.add("hide")
+        startPage.classList.remove("hide")
+        gamePage.classList.add("hide")
+        finalPage.classList.add("hide")
         wellDone.classList.add("hide")
-        restartBackground.classList.add("hide")
-        gamebackground.classList.add("hide")
+        finalPage.classList.add("hide")
     remove()
     }, 200);
 })
-})
 
-homeButton.forEach(function(item){
-    item.addEventListener("click", () => {
-        playClickSound()
-        let delay = setTimeout(() => {
-          location.assign('https://gimme.sg/activations/dementia/');
-        }, 200);
-    })
+
+home.addEventListener("click", () => {
+    playClickSound()
+    let delay = setTimeout(() => {
+      location.assign('https://gimme.sg/activations/dementia/');
+    }, 200);
 })
 
 function playClickSound(){
